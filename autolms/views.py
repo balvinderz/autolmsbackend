@@ -9,7 +9,6 @@ from autolms.dolms import automate
 
 def home(request):
 
-    #driver = webdriver.Chrome(r'/Users/balvinder/Documents/ring/chromedriver')
     usernamefromuser = request.GET.get('emailid')
 
     passwordfromuser = request.GET.get('password')
