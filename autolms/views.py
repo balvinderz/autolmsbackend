@@ -1,4 +1,3 @@
-import uuid
 import json
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -12,5 +11,7 @@ def home(request):
     usernamefromuser = request.GET.get('emailid')
 
     passwordfromuser = request.GET.get('password')
-    automate(usernamefromuser, passwordfromuser)
-    return HttpResponse(uuid.uuid1())
+    doquiz = request.GET.get("doquiz")
+    dodiscussionform = request.GET.get("dodiscussionforum")
+    print(type(doquiz))
+    return automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionform)
