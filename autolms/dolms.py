@@ -9,13 +9,16 @@ import uuid
 
 def automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionforum):
     chrome_options = Options()
+    chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
     # driver = webdriver.Chrome(options=chrome_options)
     chrome_options.add_experimental_option(
         "prefs", {'profile.managed_default_content_settings.javascript': 2, "download.default_directory": "NUL", "download.prompt_for_download": False, })
 
-   # driver = webdriver.Chrome(
-    #    r'/Users/balvinder/Documents/ring/chromedriver', options=chrome_options)
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER PATH"), options=chrome_options)
+    #driver = webdriver.Chrome(options=chrome_options)
     driver.get("http://mydy.dypatil.edu/rait/login/index.php?uname=" +
                usernamefromuser+"&wantsurl=")
     # loginbtn = driver.find_element_by_id('loginbtn')
