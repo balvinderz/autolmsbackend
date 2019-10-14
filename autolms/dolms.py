@@ -20,13 +20,16 @@ def automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionforum):
                usernamefromuser+"&wantsurl=")
     # loginbtn = driver.find_element_by_id('loginbtn')
     # loginbtn.click()
-    password = driver.find_element_by_id('password')
-    password.send_keys(passwordfromuser)
+    try:
+        password = driver.find_element_by_id('password')
+        password.send_keys(passwordfromuser)
+    except:
+        return "Invalid Email-id or Password"
     loginbtn = driver.find_element_by_id('loginbtn')
     loginbtn.click()
     time.sleep(2)
     if(driver.current_url != "http://mydy.dypatil.edu/rait/my/"):
-        return "invalid username or password"
+        return "Invalid Email-id or Password"
     driver.get(
         'http://mydy.dypatil.edu/rait/blocks/academic_status/ajax.php?action=myclasses')
     table = driver.find_element_by_class_name('generaltable')
@@ -89,7 +92,7 @@ def automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionforum):
                 continue
         driver.get(url)
     driver.close()
-    return uuid.uuid1()
+    return "Done"
 
 
 #automate("nis.ash.rt17@rait.ac.in", "dypatil@123")

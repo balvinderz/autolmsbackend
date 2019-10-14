@@ -26,7 +26,6 @@ SECRET_KEY = 'iy10bo#5cym3am9^)=x#-o1v6+mnu*35mjyirealwcfa*1mk-q'
 DEBUG = True
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'autolms',
-    'corsheaders'
+    'corsheaders',
+
 ]
 MIDDLEWARE_CLASSES = (
     'corsheaders.middleware.CorsMiddleware',
@@ -52,18 +52,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  
+    'corsheaders.middleware.CorsMiddleware',
 
 ]
 ALLOWED_HOSTS = ['*']
 
-CORS_ORIGIN_ALLOW_ALL = True   
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'autolmsbackend.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,7 +75,9 @@ TEMPLATES = [
         },
     },
 ]
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 WSGI_APPLICATION = 'autolmsbackend.wsgi.application'
 
 

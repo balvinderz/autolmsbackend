@@ -11,7 +11,8 @@ def home(request):
     usernamefromuser = request.GET.get('emailid')
 
     passwordfromuser = request.GET.get('password')
-    doquiz = request.GET.get("doquiz")
-    dodiscussionform = request.GET.get("dodiscussionforum")
-    print(type(doquiz))
-    return automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionform)
+    doquiz = int(request.GET.get("doquiz"))
+    print(doquiz)
+    dodiscussionform = int(request.GET.get("dodiscussionform"))
+    print(dodiscussionform)
+    return HttpResponse(automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionform))
