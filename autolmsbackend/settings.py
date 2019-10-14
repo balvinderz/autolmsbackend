@@ -14,10 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'iy10bo#5cym3am9^)=x#-o1v6+mnu*35mjyirealwcfa*1mk-q'
@@ -35,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'autolms',
     'corsheaders',
 
@@ -75,9 +75,7 @@ TEMPLATES = [
         },
     },
 ]
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
 WSGI_APPLICATION = 'autolmsbackend.wsgi.application'
 
 
@@ -123,9 +121,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'static'),
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'

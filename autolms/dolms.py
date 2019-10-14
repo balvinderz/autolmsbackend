@@ -17,7 +17,7 @@ def automate(usernamefromuser, passwordfromuser, doquiz, dodiscussionforum):
     chrome_options.add_experimental_option(
         "prefs", {'profile.managed_default_content_settings.javascript': 2, "download.default_directory": "NUL", "download.prompt_for_download": False, })
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER PATH"), options=chrome_options)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     #driver = webdriver.Chrome(options=chrome_options)
     driver.get("http://mydy.dypatil.edu/rait/login/index.php?uname=" +
                usernamefromuser+"&wantsurl=")
